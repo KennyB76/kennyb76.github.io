@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BIOS 확인 — 팬 · 메모리</title>
+<style>
+  :root{--bg:#14110f;--panel:#1d1916;--line:#3a322c;--fg:#f2e9dd;--dim:#b3a596;
+        --faint:#7d7266;--hot:#d15a47;--ok:#6fbf8f;--gold:#d8a33f}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--fg);font-family:"Malgun Gothic","Segoe UI",system-ui,sans-serif;
+       padding:20px 16px 70px;line-height:1.6;font-size:16px}
+  .wrap{max-width:640px;margin:0 auto}
+  h1{font-size:20px;margin-bottom:6px}
+  .sub{color:var(--faint);font-size:13px;margin-bottom:22px}
+  h2{font-size:16px;margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+        padding:14px 16px;margin-bottom:10px;display:flex;gap:13px}
+  .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--hot);color:#fff;
+     display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  kbd{background:#2a231e;border:1px solid var(--line);border-radius:5px;padding:2px 8px;
+      font-family:Consolas,monospace;font-size:14px;color:var(--gold);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0 4px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+  th{color:var(--faint);font-size:11.5px;text-transform:uppercase;letter-spacing:.4px}
+  td.k{font-family:Consolas,monospace;color:var(--gold);white-space:nowrap}
+  .box{border-left:3px solid var(--hot);background:#241a17;border-radius:0 10px 10px 0;
+       padding:13px 15px;margin:16px 0;font-size:14.5px}
+  .box.ok{border-left-color:var(--ok);background:#18241d}
+  .box b{color:var(--hot)} .box.ok b{color:var(--ok)}
+  .chk{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line)}
+  .sq{flex:none;width:19px;height:19px;border:2px solid var(--faint);border-radius:5px;margin-top:2px}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1>BIOS 확인 — 팬 · 메모리</h1>
+<p class="sub">ASUS PRIME Z690-P WIFI D4 · 2026-08-27 하드웨어 교체 뒤</p>
+
+<div class="box ok">
+  <b>먼저:</b> Windows 에서 이미 확인된 것 — 메모리 <b>63.8GB · 3200MHz</b> 정상,
+  SSD <b>WD_BLACK SN7100 2TB</b> 인식됨, CPU <b>정속 3600MHz</b> (펌프 살아 있음).
+  BIOS 는 <b>팬 확인</b> 하나 때문에 들어간다.
+</div>
+
+<h2>들어가는 법</h2>
+<div class="step"><span class="n">1</span><div>재부팅 → 화면 켜지자마자 <kbd>Delete</kbd> 연타</div></div>
+<div class="step"><span class="n">2</span><div>첫 화면(EZ Mode)에 CPU 온도·메모리가 이미 보인다</div></div>
+<div class="step"><span class="n">3</span><div><kbd>F7</kbd> → Advanced Mode 로 전환</div></div>
+<div class="step"><span class="n">4</span><div>맨 위 탭에서 <b>Monitor</b> 선택</div></div>
+
+<h2>팬 헤더 — 0 RPM 찾기</h2>
+<table>
+  <tr><th>헤더</th><th>무엇</th><th>비었으면</th></tr>
+  <tr><td class="k">AIO_PUMP</td><td>수랭 펌프</td><td><b style="color:var(--hot)">즉시 조치</b></td></tr>
+  <tr><td class="k">CPU_FAN</td><td>CPU 팬</td><td><b style="color:var(--hot)">즉시 조치</b></td></tr>
+  <tr><td class="k">CPU_OPT</td><td>보조</td><td>안 써도 됨</td></tr>
+  <tr><td class="k">CHA_FAN1</td><td>케이스 팬</td><td>급하지 않음</td></tr>
+  <tr><td class="k">CHA_FAN2</td><td>케이스 팬</td><td>급하지 않음</td></tr>
+  <tr><td class="k">CHA_FAN3</td><td>케이스 팬</td><td>급하지 않음</td></tr>
+</table>
+
+<div class="box">
+  <b>N/A 나 0 RPM 인 줄을 적어라.</b> 그게 빠진 헤더다.
+  <b>AIO_PUMP 와 CPU_FAN 만 살아 있으면</b> 나머지는 오늘 안 고쳐도 된다.
+</div>
+
+<h2>같이 볼 것</h2>
+<div class="chk"><span class="sq"></span><div><b>CPU 온도</b> — 40°C 아래면 정상. 70°C 넘으면 펌프 의심</div></div>
+<div class="chk"><span class="sq"></span><div><b>Memory</b> — <b>65536MB (64GB)</b> · <b>3200MHz</b></div></div>
+<div class="chk"><span class="sq"></span><div><b>DIMM 슬롯</b> — A2·B2 에 32GB 씩 (A1·B1 은 빈칸)</div></div>
+<div class="chk"><span class="sq"></span><div><b>NVMe</b> — 디스크 두 개 다 보이나</div></div>
+
+<h2>손대지 말 것</h2>
+<div class="box">
+  <b>VMD 관련 항목 전부.</b> Intel RST VMD 가 켜진 채로 Windows 가 깔려 있어서,
+  끄면 <b>부팅이 안 된다.</b> 저장장치 설정은 건드리지 않는다.
+  <br><br>
+  메모리도 <b>이미 3200 으로 돌고 있으니</b> XMP 손댈 필요 없다.
+</div>
+
+<h2>나올 때</h2>
+<div class="step"><span class="n">1</span><div>아무것도 안 바꿨으면 <kbd>Esc</kbd> → <b>Discard Changes &amp; Exit</b></div></div>
+<div class="step"><span class="n">2</span><div>바꿨으면 <kbd>F10</kbd> → Save &amp; Exit</div></div>
+
+<p class="sub" style="margin-top:28px">배치도: <a href="./board-layout.html" style="color:var(--gold)">board-layout.html</a></p>
+
+</div></body></html>
