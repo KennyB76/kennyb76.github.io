@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRIME Z690-P WIFI D4 — 슬롯 배치</title>
+<style>
+  :root{
+    --bg:#14110f; --panel:#1d1916; --line:#3a322c; --pcb:#1f3a2e; --pcb-line:#2f5a46;
+    --fg:#f2e9dd; --dim:#b3a596; --faint:#7d7266;
+    --hot:#d15a47; --ok:#6fbf8f; --cool:#5a9fd1; --gold:#d8a33f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--fg);
+    font-family:"Malgun Gothic","Segoe UI",system-ui,sans-serif;
+    padding:28px 20px 60px;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:19px;letter-spacing:.2px;margin-bottom:4px}
+  .sub{color:var(--faint);font-size:12.5px;margin-bottom:22px}
+  .sub b{color:var(--dim);font-weight:600}
+  figure{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:18px;margin-bottom:24px}
+  svg{width:100%;height:auto;display:block}
+  .mono{font-family:"Consolas","D2Coding",monospace}
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:10px;margin-top:16px}
+  .lg{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--dim)}
+  .sw{width:13px;height:13px;border-radius:3px;flex:none;margin-top:3px}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:22px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--faint);font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+  td.k{color:var(--fg);font-weight:600;white-space:nowrap}
+  code{font-family:"Consolas",monospace;background:#2a231e;border:1px solid var(--line);
+    border-radius:4px;padding:1px 6px;font-size:12px;color:var(--gold)}
+  .note{border-left:3px solid var(--hot);background:#241a17;border-radius:0 10px 10px 0;
+    padding:13px 16px;margin-bottom:20px;font-size:13.5px}
+  .note b{color:var(--hot)}
+  .ok-note{border-left-color:var(--ok);background:#18241d}
+  .ok-note b{color:var(--ok)}
+  h2{font-size:14.5px;margin:26px 0 10px;color:var(--fg)}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1>ASUS PRIME Z690-P WIFI D4 — 슬롯 배치</h1>
+<p class="sub">케이스 옆판 열고 봤을 때 방향. 뒷면 I/O 가 왼쪽 · 확장 슬롯이 아래.
+  <b>ASUS 공식 제원 기준 (2026-08-27 확인).</b></p>
+
+<div class="note ok-note">
+  <b>M.2 세 개가 전부 PCIe 4.0 x4 다.</b> SN7100 은 <b>어느 슬롯에 꽂아도 Gen4 최고속</b>이 나온다.
+  자리 싸움 안 해도 된다 — 제일 손 닿기 쉬운 빈 슬롯에 꽂으면 그만이다.
+</div>
+
+<figure>
+<svg viewBox="0 0 1180 880" role="img" aria-label="메인보드 슬롯 배치도">
+  <defs>
+    <pattern id="pcb" width="14" height="14" patternUnits="userSpaceOnUse">
+      <rect width="14" height="14" fill="#1f3a2e"/>
+      <path d="M0 14L14 0" stroke="#264636" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- board -->
+  <rect x="40" y="30" width="1100" height="820" rx="12" fill="url(#pcb)" stroke="#3f7259" stroke-width="2"/>
+  <text x="1120" y="838" text-anchor="end" font-size="11" fill="#4d7a63" class="mono">ATX 305 × 234 mm</text>
+
+  <!-- rear IO -->
+  <rect x="40" y="52" width="150" height="190" rx="6" fill="#141b18" stroke="#3f7259"/>
+  <text x="115" y="140" text-anchor="middle" font-size="12" fill="#8fae9e">뒷면 I/O</text>
+  <text x="115" y="160" text-anchor="middle" font-size="10.5" fill="#6a8a79">USB · LAN · Wi-Fi</text>
+
+  <!-- CPU -->
+  <rect x="250" y="95" width="215" height="215" rx="8" fill="#2b2521" stroke="#7d6a55" stroke-width="2"/>
+  <rect x="285" y="130" width="145" height="145" rx="4" fill="#1a1613" stroke="#5e5044"/>
+  <text x="357" y="197" text-anchor="middle" font-size="14" fill="#d6c3a8" font-weight="700">CPU</text>
+  <text x="357" y="217" text-anchor="middle" font-size="11" fill="#9d8b74">i7-12700KF</text>
+  <text x="357" y="332" text-anchor="middle" font-size="10.5" fill="#6a8a79">LGA1700</text>
+
+  <!-- DIMM slots -->
+  <g>
+    <text x="655" y="72" font-size="12.5" fill="#8fae9e" font-weight="700">메모리 슬롯 4 — CPU 쪽부터</text>
+    <!-- A1 -->
+    <rect x="560" y="88" width="34" height="300" rx="4" fill="#2a2420" stroke="#5e5044"/>
+    <text x="577" y="410" text-anchor="middle" font-size="11.5" fill="#9d8b74" class="mono">A1</text>
+    <!-- A2 -->
+    <rect x="612" y="88" width="34" height="300" rx="4" fill="#3a2a24" stroke="#d15a47" stroke-width="2.5"/>
+    <text x="629" y="410" text-anchor="middle" font-size="11.5" fill="#e88a76" class="mono" font-weight="700">A2</text>
+    <!-- B1 -->
+    <rect x="664" y="88" width="34" height="300" rx="4" fill="#2a2420" stroke="#5e5044"/>
+    <text x="681" y="410" text-anchor="middle" font-size="11.5" fill="#9d8b74" class="mono">B1</text>
+    <!-- B2 -->
+    <rect x="716" y="88" width="34" height="300" rx="4" fill="#3a2a24" stroke="#d15a47" stroke-width="2.5"/>
+    <text x="733" y="410" text-anchor="middle" font-size="11.5" fill="#e88a76" class="mono" font-weight="700">B2</text>
+
+    <path d="M629 432 L629 450 L733 450 L733 432" fill="none" stroke="#d15a47" stroke-width="1.6"/>
+    <text x="681" y="470" text-anchor="middle" font-size="12.5" fill="#e88a76" font-weight="700">여기 두 칸에 32GB 두 장</text>
+    <text x="681" y="488" text-anchor="middle" font-size="10.5" fill="#b3a596">둘째 · 넷째 칸</text>
+  </g>
+
+  <!-- 24pin -->
+  <rect x="1085" y="120" width="45" height="150" rx="4" fill="#2a2420" stroke="#5e5044"/>
+  <text x="1075" y="200" text-anchor="end" font-size="10.5" fill="#6a8a79">24핀 전원</text>
+
+  <!-- M2_1 -->
+  <rect x="120" y="392" width="360" height="26" rx="4" fill="#243a4a" stroke="#5a9fd1" stroke-width="2"/>
+  <text x="132" y="410" font-size="12" fill="#8fc4e8" class="mono" font-weight="700">M.2_1</text>
+  <text x="490" y="410" font-size="11.5" fill="#7fb0d0">CPU 직결 · PCIe 4.0 ×4 · 2242~22110</text>
+
+  <!-- PCIe x16 primary -->
+  <rect x="120" y="450" width="620" height="30" rx="4" fill="#3a3128" stroke="#d8a33f" stroke-width="2"/>
+  <text x="132" y="470" font-size="12" fill="#e8c375" class="mono" font-weight="700">PCIe 5.0 ×16</text>
+  <text x="750" y="470" font-size="11.5" fill="#c9a86a">RTX 3070 Ti 여기 — 빼지 마라</text>
+
+  <!-- PCIe x1 -->
+  <rect x="120" y="512" width="150" height="22" rx="4" fill="#2a2420" stroke="#5e5044"/>
+  <text x="132" y="528" font-size="11" fill="#9d8b74" class="mono">PCIe ×1</text>
+
+  <!-- M2_2 -->
+  <rect x="120" y="552" width="360" height="26" rx="4" fill="#243a4a" stroke="#5a9fd1" stroke-width="2"/>
+  <text x="132" y="570" font-size="12" fill="#8fc4e8" class="mono" font-weight="700">M.2_2</text>
+  <text x="490" y="570" font-size="11.5" fill="#7fb0d0">칩셋 · PCIe 4.0 ×4 · 2242~2280</text>
+
+  <!-- PCIe x16 (x4) -->
+  <rect x="120" y="610" width="620" height="28" rx="4" fill="#2a2420" stroke="#5e5044"/>
+  <text x="132" y="629" font-size="11" fill="#9d8b74" class="mono">PCIe 4.0 ×16 (×4 동작)</text>
+
+  <!-- PCIe x16 (x4) 2 -->
+  <rect x="120" y="662" width="620" height="28" rx="4" fill="#2a2420" stroke="#5e5044"/>
+  <text x="132" y="681" font-size="11" fill="#9d8b74" class="mono">PCIe 3.0 ×16 (×4 동작)</text>
+
+  <!-- M2_3 -->
+  <rect x="120" y="722" width="360" height="26" rx="4" fill="#243a4a" stroke="#5a9fd1" stroke-width="2"/>
+  <text x="132" y="740" font-size="12" fill="#8fc4e8" class="mono" font-weight="700">M.2_3</text>
+  <text x="490" y="740" font-size="11.5" fill="#7fb0d0">칩셋 · PCIe 4.0 ×4 <tspan fill="#d18a5a">+ SATA 모드</tspan></text>
+
+  <!-- chipset -->
+  <rect x="820" y="600" width="120" height="110" rx="6" fill="#2b2521" stroke="#7d6a55"/>
+  <text x="880" y="650" text-anchor="middle" font-size="12" fill="#d6c3a8" font-weight="700">Z690</text>
+  <text x="880" y="668" text-anchor="middle" font-size="10.5" fill="#9d8b74">칩셋</text>
+
+  <!-- SATA -->
+  <g>
+    <rect x="1000" y="600" width="130" height="112" rx="6" fill="#2a2420" stroke="#5e5044"/>
+    <text x="1065" y="628" text-anchor="middle" font-size="11.5" fill="#9d8b74" font-weight="700">SATA ×4</text>
+    <rect x="1014" y="640" width="102" height="12" rx="2" fill="#3a3128"/>
+    <rect x="1014" y="658" width="102" height="12" rx="2" fill="#3a3128"/>
+    <rect x="1014" y="676" width="102" height="12" rx="2" fill="#3a3128"/>
+    <rect x="1014" y="694" width="102" height="12" rx="2" fill="#3a3128"/>
+  </g>
+
+  <!-- battery -->
+  <circle cx="960" cy="770" r="22" fill="#2a2420" stroke="#5e5044"/>
+  <text x="960" y="775" text-anchor="middle" font-size="10" fill="#9d8b74">CMOS</text>
+</svg>
+
+<div class="legend">
+  <div class="lg"><span class="sw" style="background:#d15a47"></span><span><b style="color:var(--hot)">램 넣을 자리</b> — A2 · B2</span></div>
+  <div class="lg"><span class="sw" style="background:#5a9fd1"></span><span><b style="color:var(--cool)">M.2 슬롯 3개</b> — 전부 PCIe 4.0 ×4</span></div>
+  <div class="lg"><span class="sw" style="background:#d8a33f"></span><span><b style="color:var(--gold)">그래픽카드</b> — 손대지 않는다</span></div>
+  <div class="lg"><span class="sw" style="background:#5e5044"></span><span>나머지 — 이번에 안 건드림</span></div>
+</div>
+</figure>
+
+<h2>M.2 슬롯 — 어디에 꽂나</h2>
+<table>
+  <tr><th>슬롯</th><th>어디쯤</th><th>연결</th><th>쓸까</th></tr>
+  <tr>
+    <td class="k mono">M.2_1</td>
+    <td>그래픽카드 <b>바로 위</b> · CPU 에 가장 가까움</td>
+    <td>CPU 직결 · PCIe 4.0 ×4</td>
+    <td><b style="color:var(--ok)">1순위</b> — CPU 직결이라 부하 걸릴 때 제일 안정적</td>
+  </tr>
+  <tr>
+    <td class="k mono">M.2_2</td>
+    <td>확장 슬롯들 <b>사이</b> · 보드 가운데 아래</td>
+    <td>칩셋 · PCIe 4.0 ×4</td>
+    <td><b style="color:var(--ok)">2순위</b> — 속도 같음. 손 닿기 쉬우면 여기</td>
+  </tr>
+  <tr>
+    <td class="k mono">M.2_3</td>
+    <td>보드 <b>맨 아래</b> · CMOS 전지 근처</td>
+    <td>칩셋 · PCIe 4.0 ×4 <b style="color:var(--hot)">+ SATA 모드 겸용</b></td>
+    <td>가능하면 <b>피해라</b> — SATA 와 얽힐 수 있는 유일한 슬롯</td>
+  </tr>
+</table>
+
+<div class="note">
+  <b>M.2_3 만 조심.</b> 이 슬롯은 SATA 모드도 겸해서, 보드에 따라 여기를 쓰면 SATA 포트 하나가 죽는다.
+  지금은 SATA 에 아무것도 안 꽂혀 있어서 당장 문제는 없지만, <b>나중에 HDD 를 달 거라면</b> 새 SSD 를 M.2_1 이나 M.2_2 에 넣어두는 게 뒤탈이 없다.
+</div>
+
+<h2>메모리 — A2 · B2</h2>
+<table>
+  <tr><th>칸</th><th>CPU 에서</th><th>이번에</th></tr>
+  <tr><td class="k mono">DIMM_A1</td><td>첫째</td><td>비움</td></tr>
+  <tr><td class="k mono">DIMM_A2</td><td>둘째</td><td><b style="color:var(--hot)">32GB 한 장</b></td></tr>
+  <tr><td class="k mono">DIMM_B1</td><td>셋째</td><td>비움</td></tr>
+  <tr><td class="k mono">DIMM_B2</td><td>넷째</td><td><b style="color:var(--hot)">32GB 한 장</b></td></tr>
+</table>
+<p class="sub">슬롯 이름은 보드에 하얗게 새겨져 있다. 램을 빼면 글씨가 보인다.
+  지금 두 장이 <code>A1</code>·<code>B1</code> 에 있으면 이번에 <code>A2</code>·<code>B2</code> 로 옮겨 꽂는다.</p>
+
+<h2>확정 제원 — ASUS 공식</h2>
+<table>
+  <tr><th>항목</th><th>값</th></tr>
+  <tr><td class="k">메모리</td><td>DIMM ×4 · 최대 128GB · DDR4 · <b>3200 은 정규 속도</b> (오버클럭 아님) · XMP 지원</td></tr>
+  <tr><td class="k">M.2</td><td>3개 — M.2_1 (CPU) · M.2_2 (칩셋) · M.2_3 (칩셋 + SATA 모드). <b>전부 PCIe 4.0 ×4</b></td></tr>
+  <tr><td class="k">SATA</td><td>6Gb/s ×4 — 지금 전부 빔</td></tr>
+  <tr><td class="k">동봉품</td><td>M.2 나사 패키지 ×2 · M.2 고무 패키지 ×1 — <b>보드 상자에 여분 나사가 있다</b></td></tr>
+</table>
+
+</div></body></html>
